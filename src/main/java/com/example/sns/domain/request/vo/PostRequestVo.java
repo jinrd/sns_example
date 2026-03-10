@@ -1,4 +1,4 @@
-package com.example.sns.domain.vo;
+package com.example.sns.domain.request.vo;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PostVo {
+public class PostRequestVo {
 
     @NotBlank(message = "제목을 입력하세요")
     private String title;

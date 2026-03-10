@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.sns.domain.request.vo.UserRequestVo;
 import com.example.sns.domain.service.UserService;
-import com.example.sns.domain.vo.UserVo;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class UserController {
 	private final UserService userService;
 	
 	@PostMapping("/join")
-	public ResponseEntity<String> join(@Valid @RequestBody UserVo userVo) {
+	public ResponseEntity<String> join(@Valid @RequestBody UserRequestVo userVo) {
 		userService.join(userVo);
 		return ResponseEntity.ok("접속 성공");
 	}

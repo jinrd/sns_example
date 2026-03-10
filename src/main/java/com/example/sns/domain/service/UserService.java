@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.sns.core.db.entity.UserEntity;
 import com.example.sns.core.db.repository.UserRepository;
-import com.example.sns.domain.vo.UserVo;
+import com.example.sns.domain.request.vo.UserRequestVo;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class UserService {
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Transactional // 데이터 변경이 일어나는 작업에는 필수
-    public void join(UserVo userVo) {
+    public void join(UserRequestVo userVo) {
         // 1. 아이디 중복 체크
         userRepository.findByUsername(userVo.getUsername())
                 .ifPresent(user -> {

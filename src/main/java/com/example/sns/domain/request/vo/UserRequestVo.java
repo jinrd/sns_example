@@ -1,4 +1,4 @@
-package com.example.sns.domain.vo;
+package com.example.sns.domain.request.vo;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserVo {
+public class UserRequestVo {
 	
 	@NotBlank(message = "아이디는 필수입니다.")
     @Size(min = 4, max = 15, message = "아이디는 4~15자 사이여야 합니다.")

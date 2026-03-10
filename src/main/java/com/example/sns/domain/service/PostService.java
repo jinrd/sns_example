@@ -6,7 +6,7 @@ import com.example.sns.core.db.entity.PostEntity;
 import com.example.sns.core.db.entity.UserEntity;
 import com.example.sns.core.db.repository.PostRepository;
 import com.example.sns.core.db.repository.UserRepository;
-import com.example.sns.domain.vo.PostVo;
+import com.example.sns.domain.request.vo.PostRequestVo;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,7 +16,7 @@ public class PostService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
 
-    public void write(PostVo postVo, String username) {
+    public void write(PostRequestVo postVo, String username) {
         UserEntity userEntity = userRepository.findByUsername(username)
                                     .orElseThrow(() -> new RuntimeException("존재하지 않는 유저입니다."));
 
