@@ -22,7 +22,7 @@ public class SecurityConfig {
 		security.csrf(csrf -> csrf.disable())
 					.authorizeHttpRequests(
 						auth -> auth
-						.requestMatchers("/api/v1/users/join").permitAll()
+						.requestMatchers("/api/v1/users/**").permitAll()
 			            // 게시글 작성 임시 허용 (나중에는 로그인 사용자만 되도록 지워야 함)
 			            .requestMatchers("/api/v1/posts/write").permitAll() 
 			            // ⭐️ 게시글 목록 조회 허용 (추가된 부분) ⭐️
