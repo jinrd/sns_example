@@ -2,6 +2,10 @@ package com.example.sns.domain.controller;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,8 +36,16 @@ public class PostController {
         return ResponseEntity.ok("게시글 작성 완료");
     }
 
-    @GetMapping("/list")    
+    
+    @GetMapping("/list")    // 게시글 리스트 전체 조회
     public ResponseEntity<List<PostResponseVo>> list() {
         return ResponseEntity.ok(postService.getPostList());
+    }
+
+    @GetMapping("/page/list")
+    public ResponseEntity<Page<PostResponseVo>> listWithPage(
+        @PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable
+    ) {
+        return ResponseEntity.ok(postService.getPostListPage(pageable));
     }
 }

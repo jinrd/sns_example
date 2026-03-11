@@ -2,6 +2,8 @@ package com.example.sns.domain.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,6 +47,13 @@ public class PostService {
     public List<PostResponseVo> getPostList() {
         System.out.println("조회 시작");
         return postRepository.findAllWithUser().stream().limit(10).map(PostResponseVo::new).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public Page<PostResponseVo> getPostListPage(Pageable pageable) {
+        System.out.println("페이지 기반 조회 시작");
+        
+        return postRepository.findPageWithUser(pageable).map(PostResponseVo::new);
     }
 
 }
