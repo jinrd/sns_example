@@ -1,5 +1,7 @@
 package com.example.sns.domain.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,10 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.sns.domain.request.vo.PostRequestVo;
+import com.example.sns.domain.response.vo.PostResponseVo;
 import com.example.sns.domain.service.PostService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 @RestController
 @RequestMapping("/api/v1/posts")
@@ -25,5 +30,10 @@ public class PostController {
 
         postService.write(postVo, username);
         return ResponseEntity.ok("게시글 작성 완료");
+    }
+
+    @GetMapping("/list")    
+    public ResponseEntity<List<PostResponseVo>> list() {
+        return ResponseEntity.ok(postService.getPostList());
     }
 }

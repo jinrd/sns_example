@@ -22,7 +22,7 @@ public class SecurityConfig {
 					.authorizeHttpRequests(
 						auth -> auth.requestMatchers(
 											"/api/v1/users/join"
-														, "/api/v1/posts/write"
+														, "/api/v1/posts/*"
 													).permitAll()
 													.anyRequest()
 													.authenticated()
