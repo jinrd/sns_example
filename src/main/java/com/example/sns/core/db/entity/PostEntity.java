@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "posts")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PostEntity {
+public class PostEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -41,5 +41,9 @@ public class PostEntity {
         this.user = user;
     }
 
-    
+    // 수정(update)을 위한 비즈니스 메서드
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
